@@ -1,0 +1,20 @@
+Private Sub CommandButton1_Click()
+Dim i As Integer
+    Dim k As Integer, lui As Integer
+    MyPath = "C:\Users\s.goryachikh\Documents\Reports\"
+    MyName = Dir(MyPath, vbDirectory)
+    Do While MyName <> ""
+        If MyName <> "." And MyName <> ".." Then
+            If MyName Like "*.docx" Then
+                Selection.InsertFile FileName:=MyPath + MyName, Range:="", ConfirmConversions:=False, Link:=False, Attachment:=False
+                Selection.InsertBreak Type:=wdPageBreak
+            End If
+        End If
+        MyName = Dir
+    Loop
+Unload form_main
+End Sub
+
+Private Sub CommandButton2_Click()
+Unload form_main
+End Sub
